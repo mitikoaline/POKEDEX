@@ -3,3 +3,5 @@ function Pokedex() {
         <div></div>
     )
 }
+
+export default Pokedex

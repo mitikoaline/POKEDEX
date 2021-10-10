@@ -6,9 +6,10 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Pokedex from './pages/Pokedex'
+import Login from './pages/Login';
+import Pokedex from './pages/Pokedex';
+import Profile from './pages/Profile';
+import Register from './pages/Register';
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/Register">
             <Register/>
+          </Route>
+          <Route path="/Profile">
+            <Profile/>
           </Route>
           <Route path="/">
             <Pokedex/>
