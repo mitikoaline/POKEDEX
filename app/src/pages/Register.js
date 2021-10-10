@@ -1,6 +1,8 @@
 function Register() {
     return (
-        <div></div>
+        <div>
+            <h1>Register</h1>
+        </div>
     )
 }
 

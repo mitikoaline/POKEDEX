@@ -1,6 +1,8 @@
 function Pokedex() {
     return(
-        <div></div>
+        <div>
+            <h1>Pokédex</h1>
+        </div>
     )
 }
 
