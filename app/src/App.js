@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Login from './pages/Login'
 import Register from './pages/Register'
-import Home from './pages/Home'
+import Pokedex from './pages/Pokedex'
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
             <Register/>
           </Route>
           <Route path="/">
-            <Home/>
+            <Pokedex/>
           </Route>
         </Switch>
       </Router>
