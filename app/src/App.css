@@ -1,0 +1,21 @@
+.Pokedex {
+    display: block;
+}
+
+.Pokedex-list {
+    /* display:flex;
+    flex-direction: row; */
+    text-align: center;
+    padding: 10px;
+}
+
+.Pokedex-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Pokedex-line {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, transparent, rgb(126, 112, 112), transparent);
+}
