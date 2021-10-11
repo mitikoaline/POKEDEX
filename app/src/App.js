@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import './App.css';
 import UserContext from './contexts/User_context';
+
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Home from './pages/Home'
+import { Redirect } from 'react-router';
+
+import Login from './pages/Login';
+import Pokedex from './pages/Pokedex';
+import Profile from './pages/Profile';
+import Register from './pages/Register';
 
 
 function App() {
@@ -21,13 +25,25 @@ function App() {
       <Router>
         <Switch>
           <Route path="/Login">
-            <Login/>
+            {user?
+            <Redirect to="/"/>
+            :
+            <Login/>}
           </Route>
           <Route path="/Register">
-            <Register/>
+            {user?
+            <Redirect to="/"/>
+            :
+            <Register/>}
+          </Route>
+          <Route path="/Profile">
+            <Profile/>
           </Route>
           <Route path="/">
-            <Home/>
+            {user?
+            <Pokedex/>
+            :
+            <Redirect to="/Login"/>}
           </Route>
         </Switch>
       </Router>
