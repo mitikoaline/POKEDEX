@@ -1,8 +1,9 @@
 import { useContext, useState } from "react"
+import { Link } from "react-router-dom"
 import UserContext from "../contexts/User_context"
 
 function Login() {
-
+    //Permite o uso do 'user' em todas as páginas
     const {user, setUser} = useContext(UserContext)
     const  [name, setName] = useState('')
 
@@ -22,6 +23,8 @@ function Login() {
                 <br/>
                 <button></button>
             </form>
+            <br/>
+            <Link to="/Register">Ainda não é um treinador?</Link>
         </div>
     )
 }

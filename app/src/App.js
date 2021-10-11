@@ -31,7 +31,10 @@ function App() {
             <Login/>}
           </Route>
           <Route path="/Register">
-            <Register/>
+            {user?
+            <Redirect to="/"/>
+            :
+            <Register/>}
           </Route>
           <Route path="/Profile">
             <Profile/>
