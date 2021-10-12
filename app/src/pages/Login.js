@@ -11,9 +11,9 @@ function Login() {
     function handleSubmit(event) {
         event.preventDefault()
         async function logar() {
-            api.get(`/users/?username=${name}`)
+            api.get(`/users/${name}`)
             .then((resp) => {
-                setUser(resp.data)
+                setUser(resp.data.user.username) 
             })
             .catch((err) => {
                 alert(err)
