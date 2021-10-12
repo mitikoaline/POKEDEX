@@ -1,4 +1,5 @@
 import {useContext, useEffect, useState} from "react"
+import { Link } from "react-router-dom"
 import Card from "../components/Card"
 import UserContext from "../contexts/User_context"
 import api from "../resources/api"
@@ -31,7 +32,7 @@ function Pokedex() {
     return(
         <div className="Pokedex">
             <div className="Pokedex-top">
-                <p>Pokedex</p>
+                <Link to="/Profile">Perfil</Link>
                 <p>Olá {user}</p>
                 <button onClick={logOut}>Sair</button>
             </div>
