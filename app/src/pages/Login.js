@@ -15,8 +15,11 @@ function Login() {
 
 
     return (
-        <div>
+        <div className="login">
+            <div>
             <h1>Login</h1>
+            </div>
+            <div>
             <form onSubmit={handleSubmit}>
                 <label>Nome do treinador:</label>
                 <br/>
@@ -24,8 +27,10 @@ function Login() {
                 <br/>
                 <button></button>
             </form>
-            <br/>
+            </div>
+            <div>
             <Link to="/Register">Ainda não é um treinador?</Link>
+            </div>
         </div>
     )
 }
