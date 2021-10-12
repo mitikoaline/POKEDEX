@@ -3,13 +3,14 @@
 }
 
 .Pokedex-list {
-    /* display:flex;
-    flex-direction: row; */
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
     text-align: center;
     padding: 10px;
 }
 
-.Pokedex-top {
+.Pokedex-top, .Pokedex-bottom {
     display: flex;
     justify-content: space-between;
 }
@@ -18,4 +19,10 @@
     border: 0;
     height: 2px;
     background-image: linear-gradient(to right, transparent, rgb(126, 112, 112), transparent);
+}
+
+.Pokedex-search {
+    width: 90%;
+    border-radius: 8px;
+    padding: 5px;
 }
