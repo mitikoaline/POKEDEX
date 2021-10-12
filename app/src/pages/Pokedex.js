@@ -1,9 +1,13 @@
-import {useEffect, useState} from "react"
+import {useContext, useEffect, useState} from "react"
+import { Link } from "react-router-dom"
 import Card from "../components/Card"
+import UserContext from "../contexts/User_context"
 import api from "../resources/api"
 
 function Pokedex() {
     // atributos que serao utilizados: name, image_url, number, kind
+
+    const {user, setUser} = useContext(UserContext)
 
     const [lista, setLista] = useState([])
     
@@ -21,12 +25,16 @@ function Pokedex() {
     }, []
     )
 
+    function logOut() {
+        setUser(null)
+    }
+
     return(
         <div className="Pokedex">
             <div className="Pokedex-top">
-                <p>Pokedex</p>
-                <p>Olá, ...</p>
-                <p>Sair</p>
+                <Link to="/Profile">Perfil</Link>
+                <p>Olá {user}</p>
+                <button onClick={logOut}>Sair</button>
             </div>
             <hr className="Pokedex-line"/>
             <input type="text"/>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import UserContext from './contexts/User_context';
 
@@ -17,8 +17,22 @@ import Register from './pages/Register';
 
 function App() {
 
-  const [user,setUser] = useState(null)
-
+  const [user,setUser] = useState(userSessionStorage())
+  
+  function userSessionStorage() {
+  if (sessionStorage.getItem('user') !== 'null') {
+  return sessionStorage.getItem('user')
+  }
+  else {
+    return null
+  }
+  }
+  
+  useEffect(() => {
+    sessionStorage.setItem('user',user)
+  }, [user]
+  )
+  
   return (
     //Permite o uso do user em todas as paginas. ##Tem que criar uma constante na pagina que quiser usar##
     <UserContext.Provider value={{user, setUser}}>
