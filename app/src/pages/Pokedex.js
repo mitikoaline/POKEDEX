@@ -24,12 +24,16 @@ function Pokedex() {
     }, []
     )
 
+    function logOut() {
+        setUser(null)
+    }
+
     return(
         <div className="Pokedex">
             <div className="Pokedex-top">
                 <p>Pokedex</p>
                 <p>Olá {user}</p>
-                <p>Sair</p>
+                <button onClick={logOut}>Sair</button>
             </div>
             <hr className="Pokedex-line"/>
             <input type="text"/>
