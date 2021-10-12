@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import UserContext from "../contexts/User_context"
 
@@ -12,6 +12,7 @@ function Login() {
         //Não é feito o setUser direto no onChage, para ele mudar de página só depois de clicar no botão
         setUser(name)
     }
+
 
     return (
         <div>
