@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import UserContext from "../contexts/User_context"
+import api from "../resources/api"
 
 function Login() {
     //Permite o uso do 'user' em todas as páginas
@@ -9,8 +10,16 @@ function Login() {
 
     function handleSubmit(event) {
         event.preventDefault()
-        //Não é feito o setUser direto no onChage, para ele mudar de página só depois de clicar no botão
-        setUser(name)
+        async function logar() {
+            api.get(`/users/?username=${name}`)
+            .then((resp) => {
+                setUser(resp.data)
+            })
+            .catch((err) => {
+                alert(err)
+            })
+        }
+        logar()
     }
 
 
