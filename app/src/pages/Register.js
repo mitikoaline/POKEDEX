@@ -21,7 +21,7 @@ function Register() {
                 <br/>
                 <input value={name} onChange={(event)=>{setName(event.target.value)}}></input>
                 <br/>
-                <button></button>
+                <button>Concluído</button>
             </form>
             <br/>
             <Link to="/Login">Já é um treinador?</Link>

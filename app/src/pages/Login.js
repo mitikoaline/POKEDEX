@@ -25,7 +25,7 @@ function Login() {
                 <br/>
                 <input value={name} onChange={(event)=>{setName(event.target.value)}}></input>
                 <br/>
-                <button></button>
+                <button>Entrar</button>
             </form>
             </div>
             <div>
