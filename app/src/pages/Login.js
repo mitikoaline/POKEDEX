@@ -30,20 +30,20 @@ function Login() {
 
     return (
         <div className="login">
-            <div>
-            <h1>Login</h1>
+            <div className="login-cabeçalho">
+                <h1>Login</h1>
             </div>
-            <div>
-            <form onSubmit={handleSubmit}>
-                <label>Nome do treinador:</label>
-                <br/>
-                <input value={name} onChange={(event)=>{setName(event.target.value)}}></input>
-                <br/>
-                <button>Entrar</button>
-            </form>
+            <div className="login-formulario">
+                <form onSubmit={handleSubmit}>
+                    <label>Nome do treinador:</label>
+                    <br/>
+                    <input className="login-input" value={name} onChange={(event)=>{setName(event.target.value)}}></input>
+                    <br/>
+                    <button className="login-button">Entrar</button>
+                </form>
             </div>
-            <div>
-            <Link to="/Register">Ainda não é um treinador?</Link>
+            <div className="login-link-div">
+                <Link to="/Register" className="login-link">Ainda não é um treinador?</Link>
             </div>
         </div>
     )
