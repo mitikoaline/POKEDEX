@@ -8,12 +8,14 @@ function Pokedex() {
     // atributos que serao utilizados: name, image_url, number, kind
 
     const {user, setUser} = useContext(UserContext)
-
+    const [counter, setCounter] = useState(1)
     const [lista, setLista] = useState([])
     
     useEffect(()=>{
         async function getCards(){
-            api.get("/pokemons?page=1")
+            document.button = counter
+            // console.log(counter)
+            api.get(`/pokemons?page=${counter}`)
             .then((resp)=>{
                 setLista(resp.data.data)
             })
@@ -22,7 +24,7 @@ function Pokedex() {
             })
         }
         getCards()
-    }, []
+    }, [counter]
     )
 
     function logOut() {
@@ -33,16 +35,24 @@ function Pokedex() {
         <div className="Pokedex">
             <div className="Pokedex-top">
                 <Link to="/Profile">Perfil</Link>
-                <p>Olá {user}</p>
+                <p>Olá, {user}</p>
                 <button onClick={logOut}>Sair</button>
             </div>
             <hr className="Pokedex-line"/>
-            <input type="text"/>
+            <input type="text" className="Pokedex-search"/>
             <button>Pesquisar</button>
             <div className="Pokedex-list">
-            {lista.map((element)=>
-                <Card key={element.id} name={element.name} image={element.image_url} number={element.number} kind={element.kind}/>
-            )}
+                {lista.map((element)=>
+                    <Card key={element.id} name={element.name} image={element.image_url} number={element.number} kind={element.kind}/>
+                )}
+            </div>
+            <div className="Pokedex-bottom">
+                <button onClick={()=>{
+                    return (counter > 1)?setCounter(counter - 1) : counter
+                }} id="previous">Voltar</button>
+                <button onClick={()=>{
+                    return (counter < 33) ? setCounter(counter + 1) : counter
+                }} id="next">Próximo</button>
             </div>
         </div>
     );
