@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import UserContext from "../contexts/User_context"
+import api from "../resources/api"
 
 function Register() {
     //Permite o uso do 'user' em todas as páginas
@@ -9,8 +10,26 @@ function Register() {
 
     function handleSubmit(event) {
         event.preventDefault()
-        //Não é feito o setUser direto no onChage, para ele mudar de página só depois de clicar no botão
-        setUser(name)
+        async function registrar() {
+            const data = {
+                username: name, 
+            }
+            api.post(`/users/`, data)
+            .then((resp)=>{
+                console.log(resp.data)
+                setUser(resp.data.username)
+            })
+            .catch((err) => {
+                if (err.message === 'Request failed with status code 422') {
+                    alert('Já existe um treinador com este nome')
+                }
+                else {
+                    alert(err)
+                }
+            })
+        
+        }
+        registrar()
     }
 
     return (
