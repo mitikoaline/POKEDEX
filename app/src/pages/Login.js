@@ -16,7 +16,12 @@ function Login() {
                 setUser(resp.data.user.username) 
             })
             .catch((err) => {
-                alert(err)
+                if (err.message === 'Request failed with status code 500') {
+                    alert('Não existe um treinador com este nome')
+                }
+                else {
+                    alert(err)
+                }
             })
         }
         logar()
