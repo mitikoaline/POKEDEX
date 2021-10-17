@@ -22,6 +22,12 @@ function Profile() {
     }, []
     )
 
+    lista.sort(function (a, b) {
+	
+        return (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0);
+     
+    });
+
     return (
         <div>
             <h1>Profile</h1>
