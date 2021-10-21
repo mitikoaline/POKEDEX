@@ -37,7 +37,7 @@ function Login() {
                 <form onSubmit={handleSubmit}>
                     <label>Nome do treinador:</label>
                     <br/>
-                    <input className="login-input" value={name} onChange={(event)=>{setName(event.target.value)}}></input>
+                    <input className="login-input" value={name} onChange={(event)=>{setName(event.target.value)}} required></input>
                     <br/>
                     <button className="login-button">Entrar</button>
                 </form>
