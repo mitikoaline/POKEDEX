@@ -13,13 +13,14 @@ function Profile() {
             api.get(`/users/${user}`)
             .then((resp)=>{
                 setLista(resp.data.pokemons)
+                
             })
             .catch((err)=>{
                 console.log(err)
             })
         }
         getFavoriteCards()
-    }, []
+    }
     )
 
     lista.sort(function (a, b) {

@@ -43,7 +43,7 @@ function Pokedex() {
             <button>Pesquisar</button>
             <div className="Pokedex-list">
                 {lista.map((element)=>
-                    <Card key={element.id} name={element.name} image={element.image_url} number={element.number} kind={element.kind}/>
+                    <Card key={element.id} name={element.name} image={element.image_url} number={element.number} kind={element.kind} pokedex={true}/>
                 )}
             </div>
             <div className="Pokedex-bottom">

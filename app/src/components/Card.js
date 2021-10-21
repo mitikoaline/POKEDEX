@@ -1,4 +1,4 @@
-import {  useContext, useState } from "react";
+import {  useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import UserContext from "../contexts/User_context";
 import api from "../resources/api";
@@ -32,11 +32,12 @@ const Button = styled.button`
 
 `
 
-function Card({name, image, number, kind}) {
+function Card({name, image, number, kind, pokedex}) {
 
   const splitKind = kind.split(";")
-  const [favoritos,setFavoritos] = useState(null)
+  const [favorito,setFavorito] = useState(false)
   const  {user, setUser} = useContext(UserContext)
+  const [lista, setLista] = useState([])
 
   var listColors = {
     bug: "#7ED578",
@@ -58,16 +59,28 @@ function Card({name, image, number, kind}) {
     dragon: "#43372D",
   }
 
+    
     function favoritar() {
       api.post(`users/${user}/starred/${name}`)
       .then((resp) => {
-        alert('Adicionado aos favoritos')
+        setFavorito(true)
       })
       .catch((err) => {
-        alert('Este pokémom já foi favoritado')
+        console.log(err)
+      })
+    }
+    
+    function deletar() {
+      api.delete(`users/${user}/starred/${name}`)
+      .then((resp) => {
+        setFavorito(false)
+      })
+      .catch((err) => {
+        console.log(err)
       })
     }
 
+    if (pokedex === true) {
     return (
       <div>
       <Button className="card" color={listColors[splitKind[0]]}>
@@ -80,10 +93,27 @@ function Card({name, image, number, kind}) {
         <p>#{number}</p>
       </Button>
       <div>
-        <button onClick={favoritar}>Favoritar</button>
+        <button onClick={favorito? deletar:favoritar}>{favorito? 'Remover dos favoritos': 'Favoritar'}</button>
       </div>
       </div>
-    );
-}
+    )}
+    else {
+      return (
+        <div>
+        <Button className="card" color={listColors[splitKind[0]]}>
+          <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
+          <img src={image}/>
+          <h1>{name}</h1>
+          {/* {splitKind.map((element)=>
+              <p>{element}</p>
+          )} */}
+          <p>#{number}</p>
+        </Button>
+        <div>
+          <button onClick={deletar}>Deletar</button>
+        </div>
+        </div>
+      )}}
+
 
 export default Card;
