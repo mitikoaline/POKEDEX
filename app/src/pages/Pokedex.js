@@ -10,7 +10,7 @@ function Pokedex() {
     const {user, setUser} = useContext(UserContext)
     const [counter, setCounter] = useState(1)
     const [lista, setLista] = useState([])
-    
+
     useEffect(()=>{
         async function getCards(){
             document.button = counter
@@ -34,13 +34,13 @@ function Pokedex() {
     return(
         <div className="Pokedex">
             <div className="Pokedex-top">
-                <Link to="/Profile">Perfil</Link>
-                <p>Olá, {user}</p>
-                <button onClick={logOut}>Sair</button>
+                <Link className="pokedex-perfil" to="/Profile">Perfil</Link>
+                <p className="pokedex-name">Olá, {user}</p>
+                <button className="pokedex-sair" onClick={logOut}>Sair</button>
             </div>
             <hr className="Pokedex-line"/>
             <input type="text" className="Pokedex-search"/>
-            <button>Pesquisar</button>
+            <button className="pokedex-pesquisar">Pesquisar</button>
             <div className="Pokedex-list">
                 {lista.map((element)=>
                     <Card key={element.id} name={element.name} image={element.image_url} number={element.number} kind={element.kind} pokedex={true}/>

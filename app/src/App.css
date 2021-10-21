@@ -24,9 +24,56 @@
 }
 
 .Pokedex-search {
-    width: 90%;
+    width: 50%;
     border-radius: 8px;
     padding: 5px;
+    margin-left: 20em;
+    margin-right: 0.2em;
+    margin-top: 1.6em;
+    margin-bottom: 1em;
+    font-size: 1em;
+}
+
+.pokedex-pesquisar {
+    border: none;
+    background-color: white;
+    font-size: 1.2em;
+}
+
+.pokedex-pesquisar:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.pokedex-perfil {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    padding-top: 1em;
+}
+
+.pokedex-perfil:hover {
+    opacity: 0.4;
+}
+
+.pokedex-name {
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    padding-top: 0em;
+    
+}
+
+.pokedex-sair {
+    border: none;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    padding-top: 0.3em;
+}
+
+.pokedex-sair:hover{
+    cursor: pointer;
+    opacity: 0.4;
 }
 
 /*Página login*/
@@ -163,4 +210,28 @@
 
 .register-link:active {
     color: rgb(211, 20, 20);
+}
+
+.favoritar {
+    border: solid 1px;
+    font-size: 1.2em;
+    width: 5em;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.favoritar:hover{
+    background-color: rgb(196, 175, 175);
+}
+
+.deletar {
+    border: solid 1px ;
+    font-size: 1.2em;
+    width: 11em;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.deletar:hover{
+    background-color: rgb(196, 175, 175);
 }

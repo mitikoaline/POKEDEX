@@ -37,7 +37,8 @@ function Card({name, image, number, kind, pokedex}) {
   const splitKind = kind.split(";")
   const [favorito,setFavorito] = useState(false)
   const  {user, setUser} = useContext(UserContext)
-  const [lista, setLista] = useState([])
+  
+  
 
   var listColors = {
     bug: "#7ED578",
@@ -58,15 +59,16 @@ function Card({name, image, number, kind, pokedex}) {
     water: "#7192FF",
     dragon: "#43372D",
   }
-
+  
     
-    function favoritar() {
+      function favoritar() {
       api.post(`users/${user}/starred/${name}`)
       .then((resp) => {
         setFavorito(true)
       })
       .catch((err) => {
         console.log(err)
+        setFavorito(true)
       })
     }
     
@@ -77,6 +79,7 @@ function Card({name, image, number, kind, pokedex}) {
       })
       .catch((err) => {
         console.log(err)
+        setFavorito(false)
       })
     }
 
@@ -91,9 +94,13 @@ function Card({name, image, number, kind, pokedex}) {
             <p>{element}</p>
         )} */}
         <p>#{number}</p>
+        
       </Button>
+      
       <div>
-        <button onClick={favorito? deletar:favoritar}>{favorito? 'Remover dos favoritos': 'Favoritar'}</button>
+        
+      <button className={favorito?"deletar":"favoritar"} onClick={favorito? deletar:favoritar}>{favorito? 'Remover dos favoritos': 'Favoritar'}</button>
+      
       </div>
       </div>
     )}
@@ -110,7 +117,7 @@ function Card({name, image, number, kind, pokedex}) {
           <p>#{number}</p>
         </Button>
         <div>
-          <button onClick={deletar}>Deletar</button>
+          <button className="deletar" onClick={deletar}>Remover dos favoritos</button>
         </div>
         </div>
       )}}

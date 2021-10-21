@@ -13,7 +13,6 @@ function Profile() {
             api.get(`/users/${user}`)
             .then((resp)=>{
                 setLista(resp.data.pokemons)
-                
             })
             .catch((err)=>{
                 console.log(err)
@@ -36,7 +35,7 @@ function Profile() {
             <div className="favorite-list">
                 <h3>Pokémons favoritados</h3>
                 {lista.map((element)=>
-                    <Card key={element.id} name={element.name} image={element.image_url} number={element.number} kind={element.kind}/>
+                    <Card key={element.id} name={element.name} image={element.image_url} number={element.number} kind={element.kind} pokedex={false}/>
                 )}
             </div>
         </div>
