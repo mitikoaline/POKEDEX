@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom"
 
 const Button = styled.button`
   cursor: pointer;
@@ -53,15 +54,17 @@ function Card({name, image, number, kind}) {
   }
 
     return (
-      <Button className="card" color={listColors[splitKind[0]]}>
-        <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
-        <img src={image}/>
-        <h1>{name}</h1>
-        {/* {splitKind.map((element)=>
-            <p>{element}</p>
-        )} */}
-        <p>#{number}</p>
-      </Button>
+      <Link to={"/"+name}>
+        <Button className="card" color={listColors[splitKind[0]]}>
+          <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
+          <img src={image}/>
+          <h1>{name}</h1>
+          {/* {splitKind.map((element)=>
+              <p>{element}</p>
+          )} */}
+          <p>#{number}</p>
+        </Button>
+      </Link>
     );
 }
 
