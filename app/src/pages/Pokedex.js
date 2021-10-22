@@ -55,7 +55,7 @@ function Pokedex() {
             <input type="text" onChange={(event)=>{setSearch(event.target.value)}} value={search} className="Pokedex-search"/>
             <div className="Pokedex-list">
                 {pokemons.map((element)=>
-                    <Card key={element.id} name={element.name} image={element.image_url} number={element.number} kind={element.kind}/>
+                    <Card key={element.id} name={element.name} image={element.image_url} number={element.number} kind={element.kind} pokedex={true}/>
 
                 )}
             </div>
