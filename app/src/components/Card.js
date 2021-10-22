@@ -124,10 +124,11 @@ function Card({name, image, number, kind, pokedex}) {
           )} */}
           <p>#{number}</p>
         </Button>
+        </Link>
         <div>
           <button className="deletar" onClick={deletar}>Remover dos favoritos</button>
         </div>
-        </Link>
+        
         </div>
       )}}
   
