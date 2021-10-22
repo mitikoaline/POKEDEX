@@ -13,11 +13,13 @@ import Login from './pages/Login';
 import Pokedex from './pages/Pokedex';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
+import Pokemon from "./pages/Pokemon";
 
 
 function App() {
 
   const [user,setUser] = useState(userSessionStorage())
+  const [lista, setLista] = useState([])
   
   function userSessionStorage() {
   if (sessionStorage.getItem('user') !== 'null') {
@@ -52,6 +54,9 @@ function App() {
           </Route>
           <Route path="/Profile">
             <Profile/>
+          </Route>
+          <Route path="/:name">
+            <Pokemon/>
           </Route>
           <Route path="/">
             {user?

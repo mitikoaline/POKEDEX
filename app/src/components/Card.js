@@ -1,7 +1,9 @@
 import {  useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom"
 import UserContext from "../contexts/User_context";
 import api from "../resources/api";
+
 
 
 const Button = styled.button`
@@ -93,7 +95,7 @@ function Card({name, image, number, kind, pokedex}) {
     if (pokedex === true) {
     return (
       <div>
-
+      <Link to={"/"+name}>
       <Button className="card" color={listColors[splitKind[0]]}>
         <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
         <img src={image}/>
@@ -101,28 +103,34 @@ function Card({name, image, number, kind, pokedex}) {
         {/* {splitKind.map((element)=>
             <p>{element}</p>
         )} */}
-        <p>#{number}</p>
-        
+        <p>#{number}</p>       
       </Button>
-      
-      <div>
-        
-      <button className={favorito?"deletar":"favoritar"} onClick={favorito? deletar:favoritar}>{favorito? 'Remover dos favoritos': 'Favoritar'}</button>
-      
+      </Link>
+      <div>        
+      <button className={favorito?"deletar":"favoritar"} onClick={favorito? deletar:favoritar}>{favorito? 'Remover dos favoritos': 'Favoritar'}</button>      
       </div>
       </div>
     )}
     else {
       return (
         <div>
-
-
+        <Link to={"/"+name}>
+        <Button className="card" color={listColors[splitKind[0]]}>
+          <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
+          <img src={image}/>
+          <h1>{name}</h1>
+          {/* {splitKind.map((element)=>
+              <p>{element}</p>
+          )} */}
+          <p>#{number}</p>
+        </Button>
         <div>
           <button className="deletar" onClick={deletar}>Remover dos favoritos</button>
         </div>
+        </Link>
         </div>
       )}}
-
+  
 
 
 export default Card;
