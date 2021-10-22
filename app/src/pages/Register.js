@@ -33,17 +33,22 @@ function Register() {
     }
 
     return (
-        <div>
-            <h1>Registre-se</h1>
-            <form onSubmit={handleSubmit}>
-                <label>Nome do treinador:</label>
-                <br/>
-                <input value={name} onChange={(event)=>{setName(event.target.value)}}></input>
-                <br/>
-                <button>Concluído</button>
-            </form>
-            <br/>
-            <Link to="/Login">Já é um treinador?</Link>
+        <div className="register">
+            <div className="register-cabeçalho">
+                <h1>Registre-se</h1>
+            </div>
+            <div className="register-formulario">
+                <form onSubmit={handleSubmit}>
+                    <label>Nome do treinador:</label>
+                    <br/>
+                    <input className="register-input" value={name} onChange={(event)=>{setName(event.target.value)}} required></input>
+                    <br/>
+                    <button className="register-button">Cadastrar</button>
+                </form>
+            </div>
+            <div className="register-link-div">
+                <Link to="/Login" className="register-link">Já é um treinador?</Link>
+            </div>
         </div>
     )
 }
