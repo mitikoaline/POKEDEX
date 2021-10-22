@@ -12,6 +12,7 @@ function Pokedex() {
     const [lista, setLista] = useState([])
     const [search, setSearch] = useState("")
 
+
     useEffect(()=>{
         async function getCards(){
             api.get(`/pokemons?page=${counter}`)
@@ -44,16 +45,18 @@ function Pokedex() {
     return(
         <div className="Pokedex">
             <div className="Pokedex-top">
-                <Link to="/Profile">Perfil</Link>
-                <p>Olá, {user}</p>
-                <button onClick={logOut}>Sair</button>
+                <Link className="pokedex-perfil" to="/Profile">Perfil</Link>
+                <p className="pokedex-name">Olá, {user}</p>
+                <button className="pokedex-sair" onClick={logOut}>Sair</button>
             </div>
             <hr className="Pokedex-line"/>
+
             <label>Digite o nome do pokemon:</label>
             <input type="text" onChange={(event)=>{setSearch(event.target.value)}} value={search} className="Pokedex-search"/>
             <div className="Pokedex-list">
                 {pokemons.map((element)=>
                     <Card key={element.id} name={element.name} image={element.image_url} number={element.number} kind={element.kind}/>
+
                 )}
             </div>
             <div className="Pokedex-bottom">

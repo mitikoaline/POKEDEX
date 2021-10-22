@@ -1,4 +1,8 @@
+import {  useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import UserContext from "../contexts/User_context";
+import api from "../resources/api";
+
 
 const Button = styled.button`
   cursor: pointer;
@@ -34,9 +38,13 @@ const Button = styled.button`
 
 `
 
-function Card({name, image, number, kind}) {
+function Card({name, image, number, kind, pokedex}) {
 
   const splitKind = kind.split(";")
+  const [favorito,setFavorito] = useState(false)
+  const  {user, setUser} = useContext(UserContext)
+  
+  
 
   var listColors = {
     dark: "#705848",
@@ -58,20 +66,63 @@ function Card({name, image, number, kind}) {
     water: "#7192FF",
     dragon: "#43372D",
   }
+  
+    
+      function favoritar() {
+      api.post(`users/${user}/starred/${name}`)
+      .then((resp) => {
+        setFavorito(true)
+      })
+      .catch((err) => {
+        console.log(err)
+        setFavorito(true)
+      })
+    }
+    
+    function deletar() {
+      api.delete(`users/${user}/starred/${name}`)
+      .then((resp) => {
+        setFavorito(false)
+      })
+      .catch((err) => {
+        console.log(err)
+        setFavorito(false)
+      })
+    }
 
+    if (pokedex === true) {
     return (
       <div>
-        <Button className="card" color={listColors[splitKind[0]]}>
-          <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
-          <img src={image}/>
-          <h1>{name}</h1>
-          {/* {splitKind.map((element)=>
-              <p>{element}</p>
-          )} */}
-          <p>#{number}</p>
-        </Button>
+
+      <Button className="card" color={listColors[splitKind[0]]}>
+        <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
+        <img src={image}/>
+        <h1>{name}</h1>
+        {/* {splitKind.map((element)=>
+            <p>{element}</p>
+        )} */}
+        <p>#{number}</p>
+        
+      </Button>
+      
+      <div>
+        
+      <button className={favorito?"deletar":"favoritar"} onClick={favorito? deletar:favoritar}>{favorito? 'Remover dos favoritos': 'Favoritar'}</button>
+      
       </div>
-    );
-}
+      </div>
+    )}
+    else {
+      return (
+        <div>
+
+
+        <div>
+          <button className="deletar" onClick={deletar}>Remover dos favoritos</button>
+        </div>
+        </div>
+      )}}
+
+
 
 export default Card;

@@ -1,3 +1,5 @@
+/*Página pokedex*/
+
 .Pokedex {
     display: block;
 }
@@ -22,29 +24,78 @@
 }
 
 .Pokedex-search {
-    width: 90%;
+    width: 50%;
     border-radius: 8px;
     padding: 5px;
+    margin-left: 20em;
+    margin-right: 0.2em;
+    margin-top: 1.6em;
+    margin-bottom: 1em;
+    font-size: 1em;
 }
+
+.pokedex-pesquisar {
+    border: none;
+    background-color: white;
+    font-size: 1.2em;
+}
+
+.pokedex-pesquisar:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.pokedex-perfil {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    padding-top: 1em;
+}
+
+.pokedex-perfil:hover {
+    opacity: 0.4;
+}
+
+.pokedex-name {
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    padding-top: 0em;
+    
+}
+
+.pokedex-sair {
+    border: none;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    padding-top: 0.3em;
+}
+
+.pokedex-sair:hover{
+    cursor: pointer;
+    opacity: 0.4;
+}
+
+/*Página login*/
 
 .login {
     margin: 0;
     padding: 0;
     display: block;
-    background-color: red;
-    border: 4px black solid;
+    background-color: rgb(211, 20, 20);
+    border: 4px rgb(0, 0, 0) solid;
     min-height:98.7vh;
 }
 
 .login-cabeçalho {
     font-size: 2em;
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
 }
 
 .login-formulario {
     font-size: 1.3em;
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
     margin-top: 6em;
 }
@@ -58,16 +109,20 @@
 
 .login-button {
     font-size: 1em;
-    background-color: red;
+    background-color: rgb(211, 20, 20);
     width: 10em;
     border: none;
     cursor: pointer;
-    color: white;
+    color: rgb(255, 255, 255);
     margin-top: 0.6em;
 }
 
 .login-button:hover {
     opacity:0.7;
+}
+
+.login-button:active {
+    color: rgb(0, 0, 0);
 }
 
 .login-link-div {
@@ -78,13 +133,105 @@
 
 .login-link  {
     text-decoration: none;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .login-link:hover {
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 .login-link:active {
-    color: blue;
+    color: rgb(0, 0, 252);
+}
+
+/*Página register*/
+
+.register {
+    margin: 0;
+    padding: 0;
+    display: block;
+    background-color: rgb(0, 0, 252);
+    border: 4px rgb(0, 0, 0) solid;
+    min-height:98.7vh;
+}
+
+.register-cabeçalho {
+    font-size: 2em;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.register-formulario {
+    font-size: 1.3em;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 6em;
+}
+
+.register-input {
+    border: none;
+    margin-top: 1em;
+    font-size: 0.7em;
+    text-align: center;
+}
+
+.register-button {
+    font-size: 1em;
+    background-color: rgb(0, 0, 252);
+    width: 10em;
+    border: none;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    margin-top: 0.6em;
+}
+
+.register-button:hover {
+    opacity:0.7;
+}
+
+.register-button:active {
+    color: rgb(0, 0, 0);
+}
+
+.register-link-div {
+    text-align: end;
+    margin-top:16.6em;
+    margin-right: 0.5em;
+}
+
+.register-link  {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.register-link:hover {
+    color: rgb(0, 0, 0);
+}
+
+.register-link:active {
+    color: rgb(211, 20, 20);
+}
+
+.favoritar {
+    border: solid 1px;
+    font-size: 1.2em;
+    width: 5em;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.favoritar:hover{
+    background-color: rgb(196, 175, 175);
+}
+
+.deletar {
+    border: solid 1px ;
+    font-size: 1.2em;
+    width: 11em;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.deletar:hover{
+    background-color: rgb(196, 175, 175);
 }
