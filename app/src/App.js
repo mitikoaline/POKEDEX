@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import UserContext from './contexts/User_context';
-import api from "./resources/api";
 
 import {
   BrowserRouter as Router,
@@ -35,31 +34,12 @@ function App() {
     sessionStorage.setItem('user',user)
   }, [user]
   )
-
-  useEffect(()=>{
-    async function getNames(){
-        api.get(`/pokemons`)
-        .then((resp)=>{
-            setLista([resp.data.data].concat(lista))
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-    }
-    getNames()
-  }, []
-  )
   
   return (
     //Permite o uso do user em todas as paginas. ##Tem que criar uma constante na pagina que quiser usar##
     <UserContext.Provider value={{user, setUser}}>
       <Router>
         <Switch>
-          {lista.map((element) => (
-            <Route path={"/"+element.name}>
-              <Pokemon name={element.name}/>
-            </Route>
-          ))}
           <Route path="/Login">
             {user?
             <Redirect to="/"/>
@@ -74,6 +54,9 @@ function App() {
           </Route>
           <Route path="/Profile">
             <Profile/>
+          </Route>
+          <Route path="/:name">
+            <Pokemon/>
           </Route>
           <Route path="/">
             {user?

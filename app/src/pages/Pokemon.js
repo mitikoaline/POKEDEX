@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import api from "../resources/api";
+import {useParams} from "react-router-dom"
 
-function Pokemon({name}) {
+function Pokemon() {
 
     const [lista, setLista] = useState({})
+    const {name} = useParams()
 
     useEffect(()=>{
         async function getPokemonData(){
@@ -23,7 +25,7 @@ function Pokemon({name}) {
 
     return (
         <div>
-            <h1>{lista.name}</h1>
+            <h1>{lista?.name}</h1>
         </div>
         
     )
