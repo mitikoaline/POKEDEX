@@ -8,17 +8,23 @@ const Button = styled.button`
   cursor: pointer;
   font-family: 'Acme', sans-serif;
   // background: radial-gradient(circle, rgba(255,255,255,1) 0%, ${(props) => props.color} 100%);
-  // background: ${(props) => props.color};
-  background: radial-gradient(circle, rgba(255,255,255,1) 0%, ${(props) => props.color} 58%, ${(props) => props.color} 59%);
+  background: ${(props) => props.color};
+  // background: radial-gradient(circle, rgba(255,255,255,1) 0%, ${(props) => props.color} 58%, ${(props) => props.color} 59%);
   margin-top: 10px;
   margin-left: 10px;
-  border-radius: 20px;
+  // border-radius: 20px;
   width: 300px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border: none;
+  // border: none;
+  border: 2px solid black;
+
+  h1 {
+    margin-top: -10px;
+  }
 
   p {
+    // margin-top: -10px;
     font-size: 24px;
   }
 
@@ -41,6 +47,7 @@ function Card({name, image, number, kind, pokedex}) {
   
 
   var listColors = {
+    dark: "#705848",
     bug: "#7ED578",
     electric: "#FFF34B",
     fairy: "#FF7EE5",
@@ -86,6 +93,7 @@ function Card({name, image, number, kind, pokedex}) {
     if (pokedex === true) {
     return (
       <div>
+
       <Button className="card" color={listColors[splitKind[0]]}>
         <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
         <img src={image}/>
@@ -107,20 +115,14 @@ function Card({name, image, number, kind, pokedex}) {
     else {
       return (
         <div>
-        <Button className="card" color={listColors[splitKind[0]]}>
-          <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
-          <img src={image}/>
-          <h1>{name}</h1>
-          {/* {splitKind.map((element)=>
-              <p>{element}</p>
-          )} */}
-          <p>#{number}</p>
-        </Button>
+
+
         <div>
           <button className="deletar" onClick={deletar}>Remover dos favoritos</button>
         </div>
         </div>
       )}}
+
 
 
 export default Card;
