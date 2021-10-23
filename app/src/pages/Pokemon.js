@@ -1,6 +1,72 @@
 import { useState, useEffect } from "react";
 import api from "../resources/api";
 import {useParams, Link} from "react-router-dom";
+import styled from "styled-components";
+
+const Div = styled.div`
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: ${(props) => props.color1};
+
+    .tipo-1{
+        font-family: 'Acme', sans-serif;
+        background: ${(props) => props.color1};
+        margin-top: 10px;
+        margin-left: 10px;
+        // border-radius: 20px;
+        width: 100px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        // border: none;
+        border: 2px solid black;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 1.2em;
+        position: absolute;
+        top: 55%;
+        left: 40%;
+
+    }
+
+    .tipo-2{
+        font-family: 'Acme', sans-serif;
+        background: ${(props) => props.color2};
+        margin-top: 10px;
+        margin-left: 10px;
+        // border-radius: 20px;
+        width: 100px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        // border: none;
+        border: 2px solid black;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 1.2em;
+        position: absolute;
+        top: 55%;
+        left: 55%;
+    }
+
+    .tipo-n{
+        font-family: 'Acme', sans-serif;
+        background: ${(props) => props.color1};
+        margin-top: 10px;
+        margin-left: 10px;
+        // border-radius: 20px;
+        width: 100px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        // border: none;
+        border: 2px solid black;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 1.2em;
+        position:relative;
+        left: 47%;
+    }
+
+`
 
 function Pokemon() {
 
@@ -53,24 +119,67 @@ function Pokemon() {
 
     console.log(splitKind)
 
-    return (
-        <div color={listColors[splitKind[0]]}>
-            <Link to="/">Voltar</Link>
-            <h1>{lista?.name}</h1>
-            <img src={lista?.image_url}/>
-            <h2>Número na pokédex #{lista.number}</h2>
-            <p>Peso: {(lista.weight)/10} kg</p>
-            <p>Altura: {(lista.height)/10} m</p>
-            <div>
-                <p>{splitKind[0]}</p>
-            </div>
-            <div>
-                <p>{splitKind[1]}</p>
-            </div>
-
-        </div>
-        
-    )
+    if(splitKind[1]){
+        return (
+            <Div color1={listColors[splitKind[0]]} color2={listColors[splitKind[1]]}>
+                <Link to="/" className="voltar-button">Voltar</Link>
+                <div className="nome-pokemon">
+                    <h1>{lista?.name}</h1>
+                </div>
+                <div className="img-pokemon">
+                    <img src={lista?.image_url}/>
+                </div>
+                <div className="numero-pokedex">
+                    <h2>Número na pokédex #{lista.number}</h2>
+                </div>
+                <div className="lista-caracteristicas">
+                    <ul className="lista-caract">
+                        <li>Peso: {(lista.weight)/10} kg</li>
+                        <li>Altura: {(lista.height)/10} m</li>
+                    </ul>
+                </div>
+                <div>
+                    <div className="tipo-1">
+                        <p>{splitKind[0]}</p>
+                    </div>
+                    <div className="tipo-2">
+                        <p>{splitKind[1]}</p>
+                    </div>
+                </div>
+    
+            </Div>
+            
+        )
+    }else{
+        return (
+            <Div color1={listColors[splitKind[0]]} color2={listColors[splitKind[1]]}>
+                <Link to="/" className="voltar-button">Voltar</Link>
+                <div className="nome-pokemon">
+                    <h1>{lista?.name}</h1>
+                </div>
+                <div className="img-pokemon">
+                    <img src={lista?.image_url}/>
+                </div>
+                <div className="numero-pokedex">
+                    <h2>Número na pokédex #{lista.number}</h2>
+                </div>
+                <div className="lista-caracteristicas">
+                    <ul className="lista-caract">
+                        <li>Peso: {(lista.weight)/10} kg</li>
+                        <li>Altura: {(lista.height)/10} m</li>
+                    </ul>
+                </div>
+                <div>
+                    <div className="flex-box tipo-n">
+                        <p>{splitKind[0]}</p>
+                    </div>
+                </div>
+    
+            </Div>
+            
+        )
+    }
+    
 }
 
 export default Pokemon

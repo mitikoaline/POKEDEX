@@ -235,3 +235,63 @@
 .deletar:hover{
     background-color: rgb(196, 175, 175);
 }
+
+/*Página profile*/
+.profile {
+    margin: 0;
+    padding: 0;
+    display: block;
+    background-color: rgb(10, 92, 35);
+    border: 4px rgb(0, 0, 0) solid;
+    min-height:98.7vh;
+}
+
+.voltar-button {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    padding-top: 1em;
+}
+
+.profile-titulo {
+    font-size: 2em;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.profile-cabecalho {
+    font-size: 1.5em;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+/*Página pokemon*/
+
+.nome-pokemon {
+    font-size: 2em;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.numero-pokedex {
+    font-size: 1.5em;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.lista-caracteristicas {
+    font-size: 1.5em;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.lista-caract {
+    display: inline-block;
+    text-align: left;
+}
+
+.img-pokemon {
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em;
+}
