@@ -30,7 +30,7 @@ function Profile() {
 
         }
         getFavoriteCards()
-    },[]
+    },
     )
 
     lista.sort(function (a, b) {
