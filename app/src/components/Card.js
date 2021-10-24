@@ -5,7 +5,6 @@ import UserContext from "../contexts/User_context";
 import api from "../resources/api";
 
 
-
 const Button = styled.button`
   cursor: pointer;
   font-family: 'Acme', sans-serif;
@@ -45,9 +44,8 @@ function Card({name, image, number, kind, pokedex}) {
   const splitKind = kind.split(";")
   const [favorito,setFavorito] = useState(false)
   const  {user, setUser} = useContext(UserContext)
-  
-  
-
+  const [listaDeFavoritos,setListaDeFavoritos] = useState([])
+  const [teste,setTeste] = useState(false)
   var listColors = {
     dark: "#705848",
     bug: "#7ED578",
@@ -68,70 +66,107 @@ function Card({name, image, number, kind, pokedex}) {
     water: "#7192FF",
     dragon: "#43372D",
   }
-  
-    
-      function favoritar() {
-      api.post(`users/${user}/starred/${name}`)
-      .then((resp) => {
-        setFavorito(true)
-      })
-      .catch((err) => {
-        console.log(err)
-        setFavorito(true)
-      })
-    }
-    
-    function deletar() {
-      api.delete(`users/${user}/starred/${name}`)
-      .then((resp) => {
-        setFavorito(false)
-      })
-      .catch((err) => {
-        console.log(err)
-        setFavorito(false)
-      })
-    }
 
-    if (pokedex === true) {
+  useEffect(()=>{
+    async function getFavoriteCards(){
+        api.get(`/users/${user}`)
+        .then((resp)=>{
+            setListaDeFavoritos(resp.data.pokemons)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+    getFavoriteCards()
+    },[]
+  )
+
+  function BotaoFavoritar () {
+    let teste = listaDeFavoritos.map((item) => (item.name))
+    if (teste.includes(name)) {
+      return(
+      <button className={favorito?"favoritar":"deletar"} onClick={favorito? favoritar:deletar2}>{favorito? 'Favoritar': 'Remover dos favoritos'}</button>
+      )}
+    else  {
+      return (
+      <button className={favorito?"deletar":"favoritar"} onClick={favorito? deletar:favoritar}>{favorito? 'Remover dos favoritos': 'Favoritar'}</button>
+    )}
+  }
+     
+  function favoritar() {    
+    api.post(`users/${user}/starred/${name}`)
+    .then((resp) => {
+      setFavorito(true)
+    })
+    .catch((err) => {
+      console.log(err)
+      setFavorito(true)
+    })
+  }
+    
+  function deletar() {
+    api.delete(`users/${user}/starred/${name}`)
+    .then((resp) => {
+      setFavorito(false)
+    })
+    .catch((err) => {
+      console.log(err)
+      setFavorito(false)
+    })
+  }
+
+  function deletar2() {
+    api.delete(`users/${user}/starred/${name}`)
+    .then((resp) => {
+      setFavorito(true)
+    })
+    .catch((err) => {
+      console.log(err)
+      setFavorito(true)
+    })
+  }
+
+  if (pokedex === true) {
     return (
       <div>
-      <Link to={"/"+name}>
-      <Button className="card" color={listColors[splitKind[0]]}>
-        <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
-        <img src={image}/>
-        <h1>{name}</h1>
-        {/* {splitKind.map((element)=>
-            <p>{element}</p>
-        )} */}
-        <p>#{number}</p>       
-      </Button>
-      </Link>
-      <div>        
-      <button className={favorito?"deletar":"favoritar"} onClick={favorito? deletar:favoritar}>{favorito? 'Remover dos favoritos': 'Favoritar'}</button>      
-      </div>
-      </div>
-    )}
-    else {
-      return (
-        <div>
         <Link to={"/"+name}>
-        <Button className="card" color={listColors[splitKind[0]]}>
-          <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
-          <img src={image}/>
-          <h1>{name}</h1>
-          {/* {splitKind.map((element)=>
-              <p>{element}</p>
-          )} */}
-          <p>#{number}</p>
-        </Button>
+          <Button className="card" color={listColors[splitKind[0]]}>
+            <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
+            <img src={image}/>
+            <h1>{name}</h1>
+            {/* {splitKind.map((element)=>
+                <p>{element}</p>
+            )} */}
+            <p>#{number}</p>       
+          </Button>
+        </Link>
+        <div> 
+          <BotaoFavoritar/>            
+        </div>
+      </div>
+    )
+  }
+  else {
+    return (
+      <div>
+        <Link to={"/"+name}>
+          <Button className="card" color={listColors[splitKind[0]]}>
+            <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
+            <img src={image}/>
+            <h1>{name}</h1>
+            {/* {splitKind.map((element)=>
+                <p>{element}</p>
+            )} */}
+            <p>#{number}</p>
+          </Button>
         </Link>
         <div>
           <button className="deletar" onClick={deletar}>Remover dos favoritos</button>
-        </div>
-        
-        </div>
-      )}}
+        </div>     
+      </div>
+    )
+  }
+}
   
-
 
 export default Card;

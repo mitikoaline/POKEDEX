@@ -44,6 +44,7 @@ function Pokedex() {
 
     return(
         <div className="Pokedex">
+            <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
             <div className="Pokedex-top">
                 <Link className="pokedex-perfil" to="/Profile">Perfil</Link>
                 <p className="pokedex-name">Olá, {user}</p>
@@ -51,7 +52,7 @@ function Pokedex() {
             </div>
             <hr className="Pokedex-line"/>
 
-            <label>Digite o nome do pokemon:</label>
+            <label className="pokedex-label">Digite o nome do pokémon:</label>
             <input type="text" onChange={(event)=>{setSearch(event.target.value)}} value={search} className="Pokedex-search"/>
             <div className="Pokedex-list">
                 {pokemons.map((element)=>
@@ -60,10 +61,10 @@ function Pokedex() {
                 )}
             </div>
             <div className="Pokedex-bottom">
-                <button onClick={()=>{
+                <button className="pokedex-voltar" onClick={()=>{
                     return (counter > 1)?setCounter(counter - 1) : counter
                 }} id="previous">Voltar</button>
-                <button onClick={()=>{
+                <button className="pokedex-proximo" onClick={()=>{
                     return (counter < 33) ? setCounter(counter + 1) : counter
                 }} id="next">Próximo</button>
             </div>
