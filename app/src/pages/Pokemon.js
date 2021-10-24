@@ -4,9 +4,12 @@ import {useParams, Link} from "react-router-dom";
 import styled from "styled-components";
 
 const Div = styled.div`
-    height: 100vh;
     margin: 0;
     padding: 0;
+    position:absolute;
+    width:100%;
+	height:100%;
+    min-height: 1080px;
     background: ${(props) => props.color1};
 
     .details-pokemon {
