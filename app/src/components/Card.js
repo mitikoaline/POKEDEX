@@ -45,7 +45,7 @@ function Card({name, image, number, kind, pokedex}) {
   const [favorito,setFavorito] = useState(false)
   const  {user, setUser} = useContext(UserContext)
   const [listaDeFavoritos,setListaDeFavoritos] = useState([])
-
+  const [teste,setTeste] = useState(false)
   var listColors = {
     dark: "#705848",
     bug: "#7ED578",
@@ -78,17 +78,19 @@ function Card({name, image, number, kind, pokedex}) {
         })
     }
     getFavoriteCards()
-    }
+    },[]
   )
 
-  function ButaoFavoritar () {
+  function BotaoFavoritar () {
     let teste = listaDeFavoritos.map((item) => (item.name))
     if (teste.includes(name)) {
-      setFavorito(true)
-    }
-    return (
+      return(
+      <button className={favorito?"favoritar":"deletar"} onClick={favorito? favoritar:deletar2}>{favorito? 'Favoritar': 'Remover dos favoritos'}</button>
+      )}
+    else  {
+      return (
       <button className={favorito?"deletar":"favoritar"} onClick={favorito? deletar:favoritar}>{favorito? 'Remover dos favoritos': 'Favoritar'}</button>
-    )
+    )}
   }
      
   function favoritar() {    
@@ -113,6 +115,17 @@ function Card({name, image, number, kind, pokedex}) {
     })
   }
 
+  function deletar2() {
+    api.delete(`users/${user}/starred/${name}`)
+    .then((resp) => {
+      setFavorito(true)
+    })
+    .catch((err) => {
+      console.log(err)
+      setFavorito(true)
+    })
+  }
+
   if (pokedex === true) {
     return (
       <div>
@@ -128,7 +141,7 @@ function Card({name, image, number, kind, pokedex}) {
           </Button>
         </Link>
         <div> 
-          <ButaoFavoritar/>            
+          <BotaoFavoritar/>            
         </div>
       </div>
     )

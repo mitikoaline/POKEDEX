@@ -2,6 +2,7 @@
 
 .Pokedex {
     display: block;
+    background-color: #E7E6E1;
 }
 
 .Pokedex-list {
@@ -67,17 +68,19 @@
 
 .pokedex-name {
     color: rgb(0, 0, 0);
-    font-size: 1.5em;
+    font-size: 2em;
     padding-top: 0em;
-    
+    font-family: 'Acme', sans-serif;
 }
 
 .pokedex-sair {
     border: none;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+    /* background-color: rgb(255, 255, 255); */
+    /* color: rgb(0, 0, 0); */
     font-size: 1.5em;
     padding-top: 0.3em;
+    background-color: #E7E6E1;
+
 }
 
 .pokedex-sair:hover{
@@ -169,6 +172,7 @@
     margin-top: 1em;
     font-size: 0.7em;
     text-align: center;
+    border-radius: 2em;
 }
 
 .login-button {
@@ -195,6 +199,12 @@
     margin-right: 0.5em;
 }
 
+.login-link-div-erro {
+    text-align: end;
+    margin-top: 14.3em;
+    margin-right: 0.5em;
+}
+
 .login-link  {
     text-decoration: none;
     color: rgb(255, 255, 255);
@@ -206,6 +216,11 @@
 
 .login-link:active {
     color: rgb(0, 0, 252);
+}
+
+.login-erro {
+    font-size: 0.8em;
+    color: rgb(158, 243, 0);
 }
 
 /*Página register*/
@@ -237,6 +252,7 @@
     margin-top: 1em;
     font-size: 0.7em;
     text-align: center;
+    border-radius: 2em;
 }
 
 .register-button {
@@ -263,6 +279,12 @@
     margin-right: 0.5em;
 }
 
+.register-link-div-erro {
+    text-align: end;
+    margin-top: 14.3em;
+    margin-right: 0.5em;
+}
+
 .register-link  {
     text-decoration: none;
     color: rgb(255, 255, 255);
@@ -274,6 +296,11 @@
 
 .register-link:active {
     color: rgb(211, 20, 20);
+}
+
+.register-erro {
+    font-size: 0.8em;
+    color: rgb(158, 243, 0);
 }
 
 /*Página profile*/
@@ -288,20 +315,30 @@
 
 .voltar-button {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: white;
     font-size: 1.5em;
     padding-top: 1em;
 }
 
+.voltar-button:hover {
+    color: black;
+}
+
+.voltar-button:active {
+    opacity: 0.6;
+}
+
 .profile-titulo {
     font-size: 2em;
-    color: rgb(0, 0, 0);
+    /* color: rgb(0, 0, 0); */
+    color: white;
     text-align: center;
 }
 
 .profile-cabecalho {
     font-size: 1.5em;
-    color: rgb(0, 0, 0);
+    color: white;
+    /* color: rgb(0, 0, 0); */
     text-align: center;
 }
 
