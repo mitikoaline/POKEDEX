@@ -7,6 +7,7 @@ function Register() {
     //Permite o uso do 'user' em todas as páginas
     const {user, setUser} = useContext(UserContext)
     const  [name, setName] = useState('')
+    const [erro,setErro] = useState(false)
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -21,7 +22,7 @@ function Register() {
             })
             .catch((err) => {
                 if (err.message === 'Request failed with status code 422') {
-                    alert('Já existe um treinador com este nome')
+                    setErro(true)
                 }
                 else {
                     alert(err)
@@ -40,13 +41,14 @@ function Register() {
             <div className="register-formulario">
                 <form onSubmit={handleSubmit}>
                     <label>Nome do treinador:</label>
-                    <br/>
-                    <input className="register-input" value={name} onChange={(event)=>{setName(event.target.value)}} required></input>
-                    <br/>
+                    <div>
+                        <input className="register-input" value={name} onChange={(event)=>{setName(event.target.value)}} required></input>
+                    </div>
                     <button className="register-button">Cadastrar</button>
                 </form>
+                {erro?<p className="register-erro">*Esse treinador já está cadastrado</p>:<div/>}
             </div>
-            <div className="register-link-div">
+            <div className={erro?"register-link-div-erro":"register-link-div"}>
                 <Link to="/Login" className="register-link">Já é um treinador?</Link>
             </div>
         </div>

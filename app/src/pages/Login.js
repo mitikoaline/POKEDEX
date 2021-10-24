@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import UserContext from "../contexts/User_context"
 import api from "../resources/api"
@@ -7,6 +7,7 @@ function Login() {
     //Permite o uso do 'user' em todas as páginas
     const {user, setUser} = useContext(UserContext)
     const  [name, setName] = useState('')
+    const [erro,setErro] = useState(false)
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -17,7 +18,7 @@ function Login() {
             })
             .catch((err) => {
                 if (err.message === 'Request failed with status code 500') {
-                    alert('Não existe um treinador com este nome')
+                    setErro(true)
                 }
                 else {
                     alert(err)
@@ -36,15 +37,18 @@ function Login() {
             <div className="login-formulario">
                 <form onSubmit={handleSubmit}>
                     <label>Nome do treinador:</label>
-                    <br/>
-                    <input className="login-input" value={name} onChange={(event)=>{setName(event.target.value)}} required></input>
-                    <br/>
+                    <div>
+                        <input className="login-input" value={name} onChange={(event)=>{setName(event.target.value)}} required></input>
+                    </div>
                     <button className="login-button">Entrar</button>
                 </form>
+                {erro?<p className="login-erro">*Esse treinador não existe</p>:<div/>}
             </div>
-            <div className="login-link-div">
+            <div className={erro?"login-link-div-erro":"login-link-div"}>
                 <Link to="/Register" className="login-link">Ainda não é um treinador?</Link>
+                
             </div>
+            
         </div>
     )
 }

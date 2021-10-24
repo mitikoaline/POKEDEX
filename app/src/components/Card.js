@@ -78,7 +78,7 @@ function Card({name, image, number, kind, pokedex}) {
         })
     }
     getFavoriteCards()
-    }
+    },[]
   )
 
   function ButaoFavoritar () {
