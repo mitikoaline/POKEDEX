@@ -2,11 +2,13 @@ import { useState, useContext, useEffect } from "react";
 import UserContext from '../contexts/User_context';
 import api from "../resources/api";
 import Card from "../components/Card";
+import {Link} from "react-router-dom";
 
 function Profile() {
 
     const {user, setUser} = useContext(UserContext)
     const [lista, setLista] = useState([])
+    const [id, setId] = useState(0)
 
     useEffect(()=>{
         async function getFavoriteCards(){
@@ -17,6 +19,15 @@ function Profile() {
             .catch((err)=>{
                 console.log(err)
             })
+
+            api.get(`/users/${user}`)
+            .then((resp)=>{
+                setId(resp.data.user.id)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+
         }
         getFavoriteCards()
     }
@@ -29,11 +40,16 @@ function Profile() {
     });
 
     return (
-        <div>
-            <h1>Profile</h1>
-            <h2>Treinador {user}</h2>
-            <div className="favorite-list">
+        <div className="profile">
+            <Link to="/" className="voltar-button">Voltar</Link>
+            <div className="profile-titulo">
+                <h1>Profile</h1>
+            </div>
+            <div className="profile-cabecalho">
+                <h2>Treinador {user} (id = {id})</h2>
                 <h3>Pokémons favoritados</h3>
+            </div>
+            <div className="Pokedex-list">
                 {lista.map((element)=>
                     <Card key={element.id} name={element.name} image={element.image_url} number={element.number} kind={element.kind} pokedex={false}/>
                 )}
