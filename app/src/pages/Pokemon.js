@@ -138,6 +138,7 @@ function Pokemon() {
                         <li>Altura: {(lista.height)/10} m</li>
                     </ul>
                 </div>
+                
                 <div>
                     <div className="tipo-1">
                         <p>{splitKind[0]}</p>

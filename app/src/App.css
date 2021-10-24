@@ -23,11 +23,20 @@
     background-image: linear-gradient(to right, transparent, rgb(126, 112, 112), transparent);
 }
 
+.pokedex-label {
+    margin-left: 5em;
+    font-size: 1.2em;
+}
+
+.card {
+    border-radius: 2em;
+}
+
 .Pokedex-search {
     width: 50%;
     border-radius: 8px;
     padding: 5px;
-    margin-left: 20em;
+    margin-left: 2em;
     margin-right: 0.2em;
     margin-top: 1.6em;
     margin-bottom: 1em;
@@ -75,6 +84,61 @@
     cursor: pointer;
     opacity: 0.4;
 }
+
+
+.pokedex-proximo,.pokedex-voltar {
+    background-color: rgb(255, 255, 255);
+    font-size: 2.5em;
+    cursor: pointer;
+    border-radius: 0.3em;
+    margin-bottom: 0.5em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+.pokedex-proximo:hover, .pokedex-voltar:hover {
+    background-color: rgb(71, 228, 51);
+}
+
+.pokedex-proximo:active, .pokedex-voltar:active {
+    opacity: 0.7;
+}
+
+.favoritar {
+    font-size: 1.2em;
+    width: 5em;
+    background-color: rgb(202, 220, 255);
+    cursor: pointer;
+    border-radius: 0.5em;
+    margin-top: 0.3em;
+}
+
+.favoritar:hover{
+    background-color: rgb(196, 175, 175);
+}
+
+.favoritar:active {
+    opacity: 0.7;
+}
+
+.deletar {
+    font-size: 1.2em;
+    width: 11em;
+    background-color: rgb(255, 179, 179);
+    cursor: pointer;
+    border-radius: 0.5em;
+    margin-top: 0.3em;
+    
+}
+
+.deletar:hover{
+    background-color: rgb(196, 175, 175);
+}
+
+.deletar:active {
+    opacity: 0.7;
+}
+
 
 /*Página login*/
 
@@ -210,30 +274,6 @@
 
 .register-link:active {
     color: rgb(211, 20, 20);
-}
-
-.favoritar {
-    border: solid 1px;
-    font-size: 1.2em;
-    width: 5em;
-    background-color: rgb(255, 255, 255);
-    
-}
-
-.favoritar:hover{
-    background-color: rgb(196, 175, 175);
-}
-
-.deletar {
-    border: solid 1px ;
-    font-size: 1.2em;
-    width: 11em;
-    background-color: rgb(255, 255, 255);
-    
-}
-
-.deletar:hover{
-    background-color: rgb(196, 175, 175);
 }
 
 /*Página profile*/
