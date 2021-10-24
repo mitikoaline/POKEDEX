@@ -43,7 +43,7 @@ function Profile() {
         <div className="profile">
             <Link to="/" className="voltar-button">Voltar</Link>
             <div className="profile-titulo">
-                <h1>Profile</h1>
+                <h1>Perfil</h1>
             </div>
             <div className="profile-cabecalho">
                 <h2>Treinador {user} (id = {id})</h2>

@@ -2,6 +2,7 @@
 
 .Pokedex {
     display: block;
+    background-color: #E7E6E1;
 }
 
 .Pokedex-list {
@@ -67,17 +68,19 @@
 
 .pokedex-name {
     color: rgb(0, 0, 0);
-    font-size: 1.5em;
+    font-size: 2em;
     padding-top: 0em;
-    
+    font-family: 'Acme', sans-serif;
 }
 
 .pokedex-sair {
     border: none;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+    /* background-color: rgb(255, 255, 255); */
+    /* color: rgb(0, 0, 0); */
     font-size: 1.5em;
     padding-top: 0.3em;
+    background-color: #E7E6E1;
+
 }
 
 .pokedex-sair:hover{
@@ -312,13 +315,13 @@
 
 .voltar-button {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: white;
     font-size: 1.5em;
     padding-top: 1em;
 }
 
 .voltar-button:hover {
-    color: white;
+    color: black;
 }
 
 .voltar-button:active {
@@ -327,13 +330,15 @@
 
 .profile-titulo {
     font-size: 2em;
-    color: rgb(0, 0, 0);
+    /* color: rgb(0, 0, 0); */
+    color: white;
     text-align: center;
 }
 
 .profile-cabecalho {
     font-size: 1.5em;
-    color: rgb(0, 0, 0);
+    color: white;
+    /* color: rgb(0, 0, 0); */
     text-align: center;
 }
 

@@ -44,6 +44,7 @@ function Pokedex() {
 
     return(
         <div className="Pokedex">
+            <style>@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');</style>
             <div className="Pokedex-top">
                 <Link className="pokedex-perfil" to="/Profile">Perfil</Link>
                 <p className="pokedex-name">Olá, {user}</p>
